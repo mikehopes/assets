@@ -1,0 +1,6 @@
+<?php if (!defined('THINK_PATH')) exit();?><html><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><title>IT资产管理密码修改</title><link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css"><link rel="stylesheet" href="__ROOT__/style/admin/css/admin.css" /><script>       		function jump(){ 
+      		window.location="__APP__/admin/password";
+   			}
+
+		</script></head><body><form action="__URL__/update" method='post'><input type='hidden' name='id' value="<?php echo ($data["id"]); ?>"/><table  class="table"><tr><td colspan='2' class="th"><span class="span_SERVER"> &nbsp</span>用户密码修改模块</td></tr><tr ><td width="140" align="center" >账&nbsp&nbsp&nbsp&nbsp号:</td><td width="180"><input type="text"  readonly="readonly"  name='username' value="<?php echo ($data["username"]); ?>"/></td></tr><tr><td align="center" >新密码:</td><td ><input type="password" name="password" value="<?php echo $arr['password']; ?>"/> *密码必须大于6位	<input type='hidden' name='sex' value="<?php echo ($data["sex"]); ?>" ></td></tr></table></div><div  style = "text-align:center;" ><button  class="btn btn-primary" type='submit' >提交修改</button>  &nbsp;&nbsp;	
+				<button type="button" class="btn btn-default" onclick="jump()" >返回</button></button></div></form></body></html>

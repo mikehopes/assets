@@ -1,0 +1,76 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>IT资产管理密码修改</title>
+		<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css">
+		<style type="text/css">
+		table{ font-size:16px;  border-collapse:collapse;width:500px;word-break: break-all; word-wrap: break-word;       }
+		.div-a{ float:left;width:33%;}  
+		</style>
+		<script>
+			window.onload=function(){    
+				if(<{$data.sex}>==0){    
+					document.getElementsByName('sex')[1].checked='checked';
+				}else{
+					document.getElementsByName('sex')[0].checked='checked';
+				}
+			}
+       		function jumpindex(){ 
+      		window.location="__APP__/gdzc/index";
+   			}
+
+		</script>
+	</head>
+	<body>
+
+		<div class="div-a"> <button  class="i"  onclick="jumpindex()">返回IT资产管理主界面</button>  </div>
+		<td style="width:32%">		
+					<form    action="__URL__/logout" method='post'>
+		  				<div  style = "text-align:right;" >	    <button  class="btn btn-success" type='submit' >
+						<?php echo   $_SESSION['username']; ?>	退出登录 </button></div>
+					</form>	  
+		</td>  
+		<div style = "text-align:center;" >
+		<form action="__URL__/update" method='post'>
+			<input type='hidden' name='id' value="<{$data.id}>"/>
+
+			<table  border="0"  aligh="center">
+				<tr >
+					<td width="140" align="right">账&nbsp&nbsp&nbsp&nbsp号:</td>
+					<td width="180"><input type="text"  readonly="readonly"  name='username' value="<{$data.username}>"/></td>
+					<td >	</td>
+				</tr>
+				<tr>
+					<td align="right">新密码:</td>
+					<td width="180"><input type="password" name="password" value="<?php echo  $arr['password']; ?>"/></td>
+					<td  width="180" >	密码必须大于6位	</td>
+				</tr>
+				<tr>
+					<td align="right">性&nbsp&nbsp&nbsp&nbsp别:</td>
+					<td>男<input type='radio' name='sex' value='1' > 女<input type='radio' name='sex' value='0'/>	</td>
+					<td>			</td>
+				</tr>
+<!-- 			<tr>
+					<td align="center">   
+						<button  class="btn btn-success" type='submit' >提交修改
+						</button>
+					</td>
+				</tr> -->
+			</table>
+			</div>
+<!-- 			姓名:<input type="text"  name='username' value="<{$data.username}>"/><br/>
+密码: <input type="text" name="password" value="<?php echo  $arr['password']; ?>"/><br/>
+性别: 男<input type='radio' name='sex' value='1' > 女<input type='radio' name='sex' value='0'/>
+
+<br/> -->
+			<!-- <input type="submit" value="提交修改"/> -->
+			<div  style = "text-align:center;" >	  
+				<button  class="btn btn-success" type='submit' >提交修改
+				</button>
+			</div>
+		</form>
+
+
+
+	</body>
+</html>

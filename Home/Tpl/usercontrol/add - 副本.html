@@ -1,0 +1,36 @@
+﻿<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>用户可操作公司清单</title>
+	</head>
+	<body>
+
+                 访问tpl/usercontrol/add.html
+		<form action='__URL__/create' method='post'>
+			用户名
+		<select  	name='cuser'>  
+		    <?php
+				$m=M('loguser');
+				$f=M('usercontrol');
+				$ff=$f->select();
+				foreach ($ff as $ss) {
+					$userlist.=','.$ss['cuser'];
+				}
+				$uuu=explode(",", $userlist);
+				$condition['username'] = array('not in',$uuu);
+				$a=$m->where($condition)->order('id')->select();
+				foreach ($a as $b){  
+					if ($b['username']!="admin") {
+					echo "<option value=".$b['username'].">".$b['username']."</option>";
+					}else {} 	
+				}
+			?>
+		</select>
+<br/>
+			可操作公司 <input style="width:800px;" type="text" name='company' /><br/>		
+
+
+			<input type="submit" value='保存添加用户模块权限'/>
+		</form>
+	</body>
+</html>

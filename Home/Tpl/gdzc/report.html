@@ -1,0 +1,293 @@
+<!-- <!DOCTYPE html> -->
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>IT资产管理报表界面</title>
+			<link rel="stylesheet"   href="__PUBLIC__/css/bootstrap.min.css"> 
+	<style type="text/css">
+		table{ font-size:12px;  border-collapse:collapse;width: 100%;}
+		table th {
+            border-width: 1px;
+            padding: 0px;
+            border-style: solid;
+            border-color: #666666;
+            background-color: #dedede;
+                 }
+		table tr:hover  { background-color: #3399CC; }
+		table tr.altrow { background-color:#EAF2D3; } 
+		table.altrowstable {
+		    font-family: verdana,arial,sans-serif;
+		    font-size:11px;
+		    color:#333333;
+		    border-width: 1px;
+		    border-color: #a9c6c9;
+		    border-collapse: collapse;
+		}
+		table.altrowstable th {
+		    border-width: 1px;
+		    padding: 0px;
+		    border-style: solid;
+		    border-color: #a9c6c9;
+		}
+		table.altrowstable td {
+		    border-width: 1px;
+		    padding: 0px;
+		    border-style: solid;
+		    border-color: #a9c6c9;
+		}
+		.oddrowcolor{
+		    background-color:#d4e3e5;
+		}
+		.evenrowcolor{
+		    background-color:#c3dde0;
+		}
+		/*重写bootstap table-hover颜色*/
+		.table-hover > tbody > tr:hover > td,
+		.table-hover > tbody > tr:hover > th {
+		  background-color: #9966CC;
+		}
+		/*重写bootstap .table-condensed > tbody > tr > td内边距*/
+		.table-condensed > tbody > tr > td	 { padding:0px 1px; }
+		ul.a {list-style-type:circle;}
+        ul.b {list-style-type:square;}
+        ol.c {list-style-type:upper-roman;}
+        ol.d {list-style-type:lower-alpha;}
+        li {float:left;margin-bottom:1px;margin-top:1px; align:left;  width:20%;}
+        p.a { font-size:20px; background-color:#5bc0de; width:100%;text-align:center;}
+        select { width:120px; height: 24px;}
+        label { width:110px;}
+        input { width:120px; height: 24px;}
+        button.p {background-color: #337ab7;border-radius: 4px;margin:1px;padding:2px 5px;}
+		button.i {background-color: #5bc0de;border-radius: 4px;margin:1px;padding:2px 5px;}
+		button.s {background-color: #5cb85c;border-radius: 4px;margin:1px;padding:2px 5px;}
+		button.w {background-color: #f0ad4e;border-radius: 4px;margin:1px;padding:2px 5px;}
+		button.d {background-color: #d9534f;border-radius: 4px;margin:1px;padding:2px 5px;}
+ 		.div-a{ float:left;width:50%;}     
+   		.div-b{ float:right;width:50%;}   
+		.div-25{ float:right;width:25%;text-align:left; } 
+		.div-33{ float:right;width:33%;text-align:left; } 
+	 </style>
+        <script>
+       		function jumpindex(){ 
+      		 window.location="__URL__/index";
+   			}
+       		function jumpexcel(){ 
+      		 window.location="__URL__/excel";
+   			}
+  		</script>
+	</head>
+	<body>
+ 		<div class="div-a"><button  class="i"  onclick="jumpindex()">返回IT资产管理主界面</button>  </div>
+		<form    action="__URL__/logout" method='post'>
+  		 <div   style = "text-align:right;">	<button  class="btn btn-success" type='submit' >退出登录</button></div>
+		</form>    
+		 
+	<form action=""   method='get'>
+	<ul class="b"; >
+<li>
+	<label>company</label> <select    name='company'    >      
+			<option value="">---全选---</option> ;
+			<?php
+			$m=M('company');
+			$u=M('userright'); 
+			$map['user']=$_SESSION['username'];
+			$uu=$u->where($map)->getField('companyright');
+			$uuu=explode(",", $uu);
+			$condition['company'] = array('in',$uuu);
+			$a=$m->where($condition)->select();
+			foreach ($a as $b){
+			    echo "<option value=".$b['company'].">".$b['company']."</option>";
+			}
+			?>
+		</select>
+</li>		
+	<li>
+			<label>Dept </label>
+   		 <select   name='dept' > 
+	     <option value="">---全选---</option> ;
+	   		 <?php
+			$m=M('dept');
+			$a=$m->order('deptid')->select();
+			foreach ($a as $b){
+			    echo "<option value=".$b['dept'].">".$b['dept']."</option>";
+			}
+		?>
+	     </select>
+	</li>	
+
+<li><label>hardtype </label>		
+        <select  name='hardtype' > 
+			<option value="">---全选---</option> ;
+			<?php
+			$m=M('hardtype');
+			$a=$m->order('hardid')->select();
+			foreach ($a as $b){
+			    echo "<option value=".$b['hardtype'].">".$b['hardtype']."</option>";
+			}
+			?>
+		</select>
+</li>
+<li> <label>使用状态</label>   
+		<select  name='usestate'   >  
+			<option value="">-不选"已报废"-</option> ;
+			<option    value="在用">在用</option>
+			<option    value="超期使用">超期使用</option>
+			<option    value="闲置">闲置</option>
+			<option    value="已坏">已坏</option>
+			<option    value="待报废">待报废</option>
+			<option    value="已坏待报废">已坏待报废</option>
+			<option    value="已报废">已报废</option>
+			<option    value="意外丢失">意外丢失</option>
+		</select>
+</li>
+<li> <label>OS</label> 
+		<select  	name='OS'>  
+			<option value="">---全选---</option> ;
+			<option     value="xp">xp</option>
+			<option  	value="win7">win7</option>
+			<option    	value="win8">win8</option>
+			<option   	value="vista">vista</option>
+			<option    	value="win10">win10</option>
+			<option    	value="win2000">win2000</option>
+			<option   	value="win2003">win2003</option>
+			<option    	value="win2008">win2008</option>
+			<option   	value="win2012">win2012</option>
+			<option    	value="linux">linux</option>
+		</select>
+</li>
+	
+<li> <label>Office</label>
+		<select  name='office'   	>  
+		     <option    value="">---全选---</option> ;
+		     <?php	  
+              $ss=array('office2000','office2003',"office2007","office2010","office2012","office2013");
+              $len=count($ss);
+              for ($i=0;$i<$len;$i++){
+	              if ($ss[$i] == 'office2007'   )   {
+	                       echo   "<option value=".$ss[$i]. ">".$ss[$i]."</option>"; 
+	              }  else  echo   "<option value=".$ss[$i]. ">".$ss[$i]."</option>";   
+              }
+			?>	
+		</select>
+</li>	  
+
+	<li>
+	    <label>购买类型</label>
+	  	<select  name='buytype'  >  
+	  		<option value="">---全选---</option> ;
+			<option    value="新增">新增</option>
+			<option    value="替换">替换</option>
+		</select>		
+	</li>
+    <li>
+	<label>User</label> <input  style="width:120px"  type='text' name="cxuser"></input>
+	</li>
+<li><label  > fixassettag(9位)</label> <input  style="width:120px" type='text' name="cxfixassettag"></input>
+</li>		
+	<li> <button onclick="__URL__/report" >数据检索</button></li>	
+	</form>
+
+	</ul>
+		<!-- <table  width="100%"  border="1" cellspacing="0" cellpadding="0" align='center'>  -->
+		<table   style="padding: 0px 0px"  class="altrowstable   table-hover table-condensed" id="alternatecolor" >
+			<tr >
+				<!-- <th>ID</th> -->
+				<th>company</th>
+				<th>Dept</th>
+				<th>User</th>
+				<th>hardtype</th>
+				<th>Fix asset tag(9位)</th>
+				<th width="25">使用状态</th>
+				<th>Brand/Model</th>
+				<th>Serial Number</th>
+				<th>到货日期（年）</th>
+				<th>到货日期（月）</th>
+				<th>到货日期（日）</th>
+				<th>使用年限</th>
+				<th>显示器类型</th>
+				<th>设备所在地</th>
+				<th>OS</th>
+				<th>Office</th>
+				<th>old tag</th>
+				<th>购买类型</th>
+				<th>数量</th>
+				<th>备注</th>
+				<th>用途</th>
+				<th>保修年限</th>
+<!-- 				<th>第1次续保时长</th>
+				<th>第1次续保价格</th>
+				<th>第2次续保时长</th>
+				<th>第2次续保价格</th>
+				<th>第3次续保时长</th>
+				<th>第3次续保价格</th>
+				<th>第4次续保时长</th>
+				<th>第4次续保价格</th> -->
+			 
+			</tr>
+			<volist name='data' id='vo'>
+				<tr>
+<!-- <td><{$vo.id}></td> -->
+<td><{$vo.company}></td>
+<td><{$vo.dept}></td>
+<td><{$vo.employee}></td>
+<td><{$vo.hardtype}></td>
+<td><{$vo.fixassettag}></td>
+<td><{$vo.usestate}></td>
+<td><{$vo.brand}></td>
+<td><{$vo.SN}></td>
+<td><{$vo.buyyear}></td>
+<td><{$vo.buymonth}></td>
+<td><{$vo.buyday}></td>
+<td><{$vo.useyear}></td>
+<td><{$vo.LCDtype}></td>
+<td><{$vo.locate}></td>
+<td><{$vo.OS}></td>
+<td><{$vo.office}></td>
+<td><{$vo.oldtag}></td>
+<td><{$vo.buytype}></td>
+<td><{$vo.num}></td>
+<td><{$vo.remark}></td>
+<td><{$vo.usefor}></td>
+<td><{$vo.baoxiuyear}></td>
+<!-- <td><{$vo.xubaoa}></td>
+<td><{$vo.xubaoaprice}></td>
+<td><{$vo.xubaob}></td>
+<td><{$vo.xubaobprice}></td>
+<td><{$vo.xubaoc}></td>
+<td><{$vo.xubaocprice}></td>
+<td><{$vo.xubaod}></td>
+<td><{$vo.xubaodprice}></td> -->
+				</tr>
+</volist>
+		</table>
+
+		<form    action="__URL__/excelB" method='get'>
+  	 <div   style = "text-align:right;"><button  class="btn btn-success"  type='submit' > 导出excel </button>	 </div>
+		</form>    
+
+
+<script src="__PUBLIC__/js/jquery.min.js"></script>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>  
+
+<script type="text/javascript">
+function altRows(id){
+	// **********table隔行条纹的方法********
+    if(document.getElementsByTagName){  
+        var table = document.getElementById(id);  
+        var rows = table.getElementsByTagName("tr");  
+        for(i = 0; i < rows.length; i++){          
+            if(i % 2 == 0){
+                rows[i].className = "evenrowcolor";
+            }else{
+                rows[i].className = "oddrowcolor";
+            }      
+        }
+    }
+}
+
+window.onload=function(){
+    altRows('alternatecolor');
+}
+</script>
+	</body>
+</html>

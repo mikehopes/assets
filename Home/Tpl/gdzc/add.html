@@ -1,0 +1,191 @@
+﻿<!-- <?php
+//require_once('conn.php'); //伱最好写个连接数据库的文件 每次包含一下就行了！ 而且要写在最上面
+//最好把下面三行写在conn.php文件里 以后每次用时 向上面那样包含一下就OK了！！
+//$con = mysql_connect("localhost","root","") or die("错误信息：".mysql_error());   //连接
+//$company = mysql_select_db("tp_company");   //这个要不写就取不着数据 但不会报错
+//mysql_query("set names gb2312");                  
+?> -->
+<html>
+ <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>IT固定资产新增界面</title>
+  <link rel="stylesheet"   href="__PUBLIC__/css/bootstrap.min.css">
+    <style>
+        ul.a {list-style-type:circle;}
+        ul.b {list-style-type:square;}
+        ol.c {list-style-type:upper-roman;}
+        ol.d {list-style-type:lower-alpha;}
+        li {float:left;margin-bottom:1px;margin-top:1px; align:left;  width:32%;}
+        p.a { font-size:20px; background-color:#5bc0de; width:100%;text-align:center;}
+        select { width:200px; height: 24px;}
+        label { width:180px;}
+        input { width:200px; height: 24px;}
+        button.p {background-color: #337ab7;border-radius: 4px;margin:1px;padding:2px 5px;}
+		button.i {background-color: #5bc0de;border-radius: 4px;margin:1px;padding:2px 5px;}
+		button.s {background-color: #5cb85c;border-radius: 4px;margin:1px;padding:2px 5px;}
+		button.w {background-color: #f0ad4e;border-radius: 4px;margin:1px;padding:2px 5px;}
+		button.d {background-color: #d9534f;border-radius: 4px;margin:1px;padding:2px 5px;}
+ 		.div-a{ float:left;width:50%;}     
+   		.div-b{ float:right;width:50%;}   
+		.div-25{ float:right;width:25%;text-align:left; } 
+		.div-33{ float:right;width:33%;text-align:left; } 
+/*		.div-a{ float:left;width:50%;  border:1px solid #F00} 
+		.div-b{ float:left;width:50%;  border:1px solid #000} */
+
+    </style>
+        <script>
+       		function jumpindex(){ 
+      		 window.location="__URL__/index";
+   			}
+  		</script>
+ </head>
+ <body >
+
+ 	<div class="div-a"> <button  class="i"  onclick="jumpindex()">返回IT资产管理主界面</button>  </div>
+		<form    action="__URL__/logout" method='post'>
+  		 <div   style = "text-align:right;">	<button  class="btn btn-success" type='submit' >
+  		 	<?php echo   $_SESSION['username']; ?> 退出登录</button></div>
+		</form>    
+		 
+ <p class="a"   style="text-align:center;"><b>IT固定资产 新增 模块</b></p>
+
+  <form action='__URL__/create' method='post' >    
+
+     <!--     company<input type="text" name="company"/><br/>   size="1" id="Hclass" style="width:150px; height:25px; font-size:15px;margin-top:2px;"   -->
+<ul class="b";margin:50px;>
+	<li > <label>公司 (*必选)</label>	
+		 <select   name='company'  >      
+			<?php
+			$m=M('company');   
+			$u=M('usercontrol');    
+			$map['cuser']=$_SESSION['username'];          
+			$uu=$u->where($map)->getField('company');        
+			$uuu=explode(",", $uu); 
+			$condition['comname'] = array('in',$uuu);   
+			$a=$m->where($condition)->select();  
+			//$a=$uuu;
+			foreach ($a as $b){   
+			    echo "<option value=".$b['comname'].">".$b['comname']."</option>";   
+			}   
+			?>   
+		</select>   
+	</li>    
+	<li > <label>部门   (*必选)</label> 
+	    <select  name='dept' >  
+	    <?php
+			$m=M('dept');
+			$a=$m->order('deptid')->select();
+			foreach ($a as $b){
+			    echo "<option value=".$b['deptsname'].">".$b['deptsname']."</option>";
+			}
+		?>
+
+	     </select>
+	</li>
+	<li > <label>用户   (*必填)</label> </label>      <input type="text" name="employee"/></li>
+	<li > <label>硬件类型 (*必选)</label>  
+		<select  name='hardtype' >  
+			    <?php
+				$m=M('hardtype');
+				$a=$m->order('hardid')->select();
+				foreach ($a as $b){
+				    echo "<option value=".$b['hardtype'].">".$b['hardtype']."</option>";
+				}
+				?>
+		</select>
+	</li>
+	<li > <label>资产编号  (*必填)</label>  <input type="text" name="fixassettag"/>		</li>
+	<li > <label>使用状态 (*必选)</label>            
+		<select  name='usestate' >  
+			<option    value="在用">在用</option>
+			<option    value="超期使用">超期使用</option>
+			<option    value="闲置">闲置</option>
+			<option    value="已坏">已坏</option>
+			<option    value="待报废">待报废</option>
+			<option    value="已坏待报废">已坏待报废</option>
+			<option    value="已报废">已报废</option>
+			<option    value="意外丢失">意外丢失</option>
+		</select>
+	</li>
+	<li> <label>Brand/Model (*必填)</label>    <input type="text" name="brand"/>	</li>
+	<li> <label>Serial Number (*必填)</label>  <input type="text" name="SN"/>	</li>
+	<li > <label>到货日期（年）(*必填)</label><input type="text" name="buyyear"/>	</li>
+	<li > <label>到货日期（月）(*必填)</label><input type="text" name="buymonth"/>	</li>
+	<li > <label>到货日期（日）(*必填)</label><input type="text" name="buyday"/>	</li>
+	<li > <label>使用年限  (*必填)</label>		<input type="text" name="useyear" value="5" />	</li>
+	<li > <label>显示器类型</label>		<input type="text" name="LCDtype"/></li>
+	<li > <label>设备所在地</label>		<input type="text" name="locate"/> </li>
+
+	<li > <label>OS   (*必选)</label>  <!--  <input type="text" name="OS" value="win7" /> -->
+		<select  	name='OS'>  
+			<option    value=""></option>	
+		    <?php
+				$m=M('os');
+				$a=$m->order('id')->select();
+				foreach ($a as $b){  
+					if ($b['os']!="win10") {
+					echo "<option value=".$b['os'].">".$b['os']."</option>";
+					}else 
+				    echo "<option value=".$b['os']." selected='selected'".">".$b['os']."</option>";
+					
+				}
+			?>
+		</select>
+	</li>
+	<li > <label>OSSN</label>		<input type="text" name="OSSN"/> </li>
+	<li > <label>Office   (*必选)</label>
+		<select  name='office'   >  
+		     <?php	  
+              $ss=array('','office2000','office2003',"office2007","office2010","office2012","office2013","office2016");
+              $len=count($ss);
+              for ($i=0;$i<$len;$i++){
+	              if ($ss[$i] == 'office2016'   )   {
+	                       echo   "<option value=".$ss[$i]. " selected='selected'".">".$ss[$i]."</option>"; 
+	              }  else  echo   "<option value=".$ss[$i].                        ">".$ss[$i]."</option>";   
+              }
+			?>	
+		</select>
+	</li>
+	<li > <label>officeSN</label>		<input type="text" name="officeSN"/> </li>
+	<li > <label>old tag</label><input type="text" name="oldtag"/>	</li>
+	<li > <label>购买类型 (*必选)</label>
+
+	  	<select  name='buytype'  > 
+	  		<?php
+				$m=M('buytype');
+				$a=$m->order('id')->select();
+				foreach ($a as $b){
+				    echo "<option value=".$b['buytype'].">".$b['buytype']."</option>";
+				}
+			?>   
+		</select>
+
+	</li>
+	<li > <label>数量    (*必填)</label>		 	<input type="text" name="num" value="1" />	</li>
+	<li > <label>备注</label>			<input type="text" name="remark"/>	</li>
+	<li > <label>用途 </label>			<input type="text" name="usefor"/>	</li>
+	<li > <label>保修年限  (*必填)</label>		<input type="text" name="baoxiuyear" value="3" />	</li>
+	<li > <label>第1次续保时长</label><input type="text" name="xubaoa"/>	</li>
+	<li > <label>第1次续保价格</label><input type="text" name="xubaoaprice"/></li>
+	<li > <label>第2次续保时长</label><input type="text" name="xubaob"/>	</li>
+	<li > <label>第2次续保价格</label><input type="text" name="xubaobprice"/></li>
+	<li > <label>第3次续保时长</label><input type="text" name="xubaoc"/>	</li>
+	<li > <label>第3次续保价格</label><input type="text" name="xubaocprice"/></li>
+	<li > <label>第4次续保时长</label><input type="text" name="xubaod"/>	</li>
+	<li > <label>第4次续保价格</label><input type="text" name="xubaodprice"/></li>
+ </ul>
+  <center><button style="margin-top: 5px"  type="submit" class="btn btn-success">保存添加IT资产</button>  </center> 
+<!-- <table>
+	<tr> <td> </td></tr>
+	<tr> <td> </td></tr>
+	<tr> <td align="center">  </td></tr>
+</table>
+ -->
+
+</form>
+
+<script src="__PUBLIC__/js/jquery.min.js"></script>
+<script src="__PUBLIC__/js/bootstrap.min.js"></script>  
+
+ </body>
+</html>

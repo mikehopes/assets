@@ -1,0 +1,42 @@
+﻿<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>用户模块权限管理</title>
+			<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css"> 
+		 	<link rel="stylesheet" href="__ROOT__/style/admin/css/admin.css" />  
+		<script>
+			function jump(){  
+                window.location="__URL__/add";
+			}
+		</script>
+	</head>
+	<body>		
+		<table class='table'>
+			<tr>
+				<td colspan='6' class="th"><span class="span_SERVER"> &nbsp</span>用户模块权限管理</td>
+			</tr> 
+			<tr>
+				<th>操作用户</th>
+				<th>资产添加</th>
+				<th>资产修改</th>
+				<th>资产删除</th>
+				<th>资产转移</th>
+				<th>操作</th>
+			</tr>
+			<!--遍历数据-->
+			<volist name='data' id='vo'>
+				<tr>
+					<td><{$vo.funuser}></td>
+					<td><{$vo.funcreate}></td>
+					<td><{$vo.funmodify}></td>
+					<td><{$vo.fundelete}></td>
+					<td><{$vo.funtransfer}></td>
+					<td><a href="__URL__/del/id/<{$vo.id}>"    onclick="return confirm('删除后无法恢复,确定要删除吗')">删除</a> | <a href="__URL__/modify/id/<{$vo.id}>">修改</a></td>
+				</tr>
+			</volist>
+		</table>
+		<center>
+			<button  class="btn btn-primary"  onclick="jump()">添加用户模块权限</button>
+		</center>
+	</body>
+</html>

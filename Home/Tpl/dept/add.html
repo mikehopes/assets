@@ -1,0 +1,43 @@
+﻿<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>部门新增界面</title>
+			<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css">   
+			<link rel="stylesheet" href="__ROOT__/style/admin/css/admin.css" />  
+		<script>
+			function jump(){
+                window.location="__URL__/index";  //跳转到本模块的index页面
+			}
+		</script>
+	</head>
+	<body>
+		<form action='__URL__/create' method='post'>
+		<table  class='table' >
+			<tr>
+				<td colspan='6' class="th"><span class="span_SERVER"> &nbsp</span>部门新增模块</td>
+			</tr> 
+			<tr>
+				<th>部门编号</th>
+				<td width="50px"><input  type="text" name="deptid"/></td>
+				<th align="left">部门名称</th>
+				<td width="50px"><input type="text" name="deptsname"/></td>
+				<th align="left">名称英文名</th>
+				<td width="50px"><input type="text" name="deptname"/></td>
+			</tr>
+			<tr>
+				<td colspan='6' align="center" > <input   class="btn btn-primary"  type="submit" value='保存新增部门信息'/>  &nbsp 
+				<button type="button" class="btn btn-default" onclick="jump()" >					返回</button>  
+				</td>
+			</tr> 
+		</table>
+		</form>
+         
+<!--          <form action='__URL__/create' method='post'>
+			部门编号:<input type="text" name="deptid"/><br/>
+			部门名称:<input type="text" name="deptsname"/><br/>
+			部门英文名:<input type="text" name="deptname"/><br/>
+
+			<input type="submit" value='保存添加部门信息'/>
+		</form> -->
+	</body>
+</html>

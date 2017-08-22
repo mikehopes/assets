@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>IT资产管理密码修改</title>
+		<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css">
+		<style type="text/css">
+		table{ font-size:20px;  border-collapse:collapse;width:600px;word-break: break-all; word-wrap: break-word;       }
+		.div-a{ float:left;width:33%;}  
+		</style>
+		<script>
+			function jump(){
+			//	window.location="/thinkphp/index.php/user/add";       // 与下面的等效   
+                window.location="__URL__/add";
+			}
+			function jumpindex(){ 
+      		window.location="__APP__/gdzc/index";
+   			}
+		</script>
+	</head>
+	<body> 
+<!-- 	<form action="__URL__/logout" method='post'>
+		<input type='submit' value=' <?php echo   $_SESSION['username']; ?> 退出登录'/>
+	</form>
+ -->
+ 					<div class="div-a">
+ 					 <button  class="i"  onclick="jumpindex()">返回IT资产管理主界面
+ 					 </button>  
+ 					</div>
+
+			<form    action="__URL__/logout" method='post'>
+			    <div   style = "text-align:right;">	<button  class="btn btn-success" type='submit' >
+			 	<?php echo   $_SESSION['username']; ?> 
+			   	退出登录</button></div>
+			 </form>
+
+<!-- 		<table>
+	<tr>
+		<td style="width:33%">
+		</td>
+		<td  style="width:33%" >
+			<form    action="__APP__/gdzc/add" method='post'>
+  				<div   style = "text-align:left;">	 
+			下面1行调取模块权限表的funcreate的权限设置
+		   <?php   if( $userfun['funcreate'] == '1' ) {?> 
+		  	<button  class="btn btn-success" type='submit'>
+			 添加IT资产
+			</button>
+		    <?php  }?>
+		    上面1行结束模块权限表的funcreate的权限设置
+	         	</div>
+			</form>	
+		</td>
+		<td style="width:32%">		
+			<form    action="__URL__/logout" method='post'>
+  				<div  style = "text-align:right;" >	    <button  class="btn btn-success" type='submit' >
+				<?php echo   $_SESSION['username']; ?>	退出登录 </button></div>
+			</form>	  
+		</td>   
+	</tr>   
+</table>   -->
+
+		<table border='1' width="500" align='center'>
+              <!--写表头-->
+			<tr>
+				<th>id</th>
+				<th>账号</th>
+				<th>性别</th>
+				<th>操作</th>
+			</tr>
+			<!--遍历数据-->
+			<volist name='data' id='vo'>
+				<tr>
+					<td><{$vo.id}></td>
+					<td><{$vo.username}></td>
+					<td><{$vo.sex}></td>
+					<td> <a href="__URL__/modify/">修改密码 </a></td>
+				</tr>
+			</volist>
+		</table>
+
+	</body>
+</html>

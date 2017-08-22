@@ -1,0 +1,63 @@
+﻿<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>用户模块权限新增</title>
+			<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css">   
+			<link rel="stylesheet" href="__ROOT__/style/admin/css/admin.css" />  
+		<script>
+			function jump(){
+                window.location="__URL__/index";  //跳转到本模块的index页面
+			}
+		</script>
+	</head>
+	<body>
+		<form action='__URL__/create' method='post'>
+		<table  class='table' >
+			<tr>
+				<td colspan='8' class="th"><span class="span_SERVER"> &nbsp</span>用户模块权限新增</td>
+			</tr> 
+			<tr>
+				<th>操作用户</th>
+				<td colspan='7' width="50px">
+					<select   style="width:240px;"	name='funuser'>  
+					    <?php
+							$m=M('loguser');
+							$f=M('funright');
+							$ff=$f->select();
+							foreach ($ff as $ss) {
+								$userlist.=','.$ss['funuser'];
+							}
+							$uuu=explode(",", $userlist);
+							$condition['username'] = array('not in',$uuu);
+							$a=$m->where($condition)->order('id')->select();
+							foreach ($a as $b){  
+								if ($b['username']!="admin") {
+								echo "<option value=".$b['username'].">".$b['username']."</option>";
+								}else {} 	
+							}
+						?>
+					</select></td>
+			</tr> 
+			<tr>
+				<th align="left">新增固定资产</th>
+				<td>授权<input type="radio" name='funcreate' value='1'/> &nbsp;&nbsp;
+			        不授权<input type='radio' name='funcreate' value='0'/></td>
+				<th align="left">修改固定资产</th>
+				<td>授权<input type="radio" name='funmodify' value='1'/>  &nbsp;&nbsp;
+			        不授权<input type='radio' name='funmodify' value='0'/></td>				
+				<th align="left">删除固定资产</th>
+				<td>授权<input type="radio" name='fundelete' value='1'/>  &nbsp;&nbsp;
+			        不授权<input type='radio' name='fundelete' value='0'/></td>
+				<th align="left">转移固定资产</th>
+				<td>授权<input type="radio" name='funtransfer' value='1'/>  &nbsp;&nbsp;
+			        不授权<input type='radio' name='funtransfer' value='0'/></td>
+			</tr>
+			<tr>
+				<td colspan='10' align="center" > <input   class="btn btn-primary"  type="submit" value='保存新增用户模块权限'/>  &nbsp 
+				<button type="button" class="btn btn-default" onclick="jump()" >					返回</button>  
+				</td>
+			</tr> 
+		</table>
+		</form>
+	</body>
+</html>

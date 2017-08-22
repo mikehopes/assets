@@ -1,0 +1,102 @@
+﻿<!-- <?php
+//require_once('conn.php'); //伱最好写个连接数据库的文件 每次包含一下就行了！ 而且要写在最上面
+//最好把下面三行写在conn.php文件里 以后每次用时 向上面那样包含一下就OK了！！
+$con = mysql_connect("localhost","root","") or die("错误信息：".mysql_error());   //连接
+$company = mysql_select_db("tp_company");   //这个要不写就取不着数据 但不会报错
+mysql_query("set names gb2312");                  
+?> -->
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>Add</title>
+	   <style>
+		ul.a {list-style-type:circle;}
+        ul.b {list-style-type:square;}
+        ol.c {list-style-type:upper-roman;}
+        ol.d {list-style-type:lower-alpha;}
+		li {float:left;margin-left:0px; width:33%;} 
+		p.a { font-size:20px; background-color:#4169E1;}
+	   </style>
+       <script>
+			function jumpindex(){
+				window.location="__URL__/index";
+			}
+		</script>
+	</head>
+	<body >
+ 访问tpl/gdzc/add.html  <br>
+ 		<form   action="__URL__/logout" method='post'>
+		<div style = "text-align:right;">	<input type='submit' value=' 退出登录'/></div>
+		</form>
+ <button onclick="jumpindex()">返回IT资产管理主界面</button>   
+ <p class="a" align="center"><b>IT固定资产新增模块</b></p>
+		<form action='__URL__/create' method='post' >    
+
+     <!--     company<input type="text" name="company"/><br/>   size="1" id="Hclass" style="width:150px; height:25px; font-size:15px;margin-top:2px;"   -->
+<ul class="b";margin:100px;>
+<li > company  
+<!--  <?php
+  $m=M('company');
+   $result=$m->select();
+ //$sql="select * from $company";
+ //$result=mysql_query($sql);
+ //print_r($result);
+ ?> --> 
+ <select name='company'>  
+    <option value="甄兴(上海)">甄兴(上海)</option>
+    <option value="上海顶峰">上海顶峰</option>
+    <option value="厦门顶峰">厦门顶峰</option>
+    <option value="成都顶峰">成都顶峰</option>
+	<option value="重庆顶峰">重庆顶峰</option>
+	<option value="太仓顶峰">太仓顶峰</option>
+<!-- <?php
+$m=M('company');
+$result=$m->select();
+//$row =$result->fetch_array(MYSQL_ASSOC);
+while($row=mysql_fetch_assoc($result) )    {     
+//print_r($row);
+?>
+ <option value="<?php echo $row['company'] ?>">  <?php  echo $row['company'] ?>  </option> 
+  <option value=<? $row['company'] ?>>  <? $row['company']?>  </option> 
+<?php
+}
+?> -->
+</select>
+</li>    
+<li > Dept<input type="text" name="dept"/> </li>
+<li > User<input type="text" name="employee"/></li> 
+<li>hardtype<input type="text" name="hardtype"/>	</li> 	
+<li>Fix asset tag(9位)<input type="text" name="fixassettag"/>	</li> 	
+<li>使用状态<input type="text" name="usestate"/>	</li> 	
+<li>Brand/Model<input type="text" name="brand"/>	</li> 	
+<li>Serial Number<input type="text" name="SN"/>	</li> 	
+<li>到货日期（年）<input type="text" name="buyyear"/>	</li> 	
+<li>到货日期（月）  <input type="text" name="buymonth"/>	</li> 	
+<li>到货日期（日） <input type="text" name="buyday"/>	</li> 	
+<li>使用年限<input type="text" name="useyear"/>	</li> 	
+<li>显示器类型<input type="text" name="LCDtype"/></li> 	
+<li>设备所在地<input type="text" name="locate"/>	</li> 	
+<li>OS<input type="text" name="OS"/></li> 	
+<li>Office<input type="text" name="office"/></li> 	
+<li>old tag<input type="text" name="oldtag"/>	</li> 
+<li>购买类型<input type="text" name="buytype"/>	</li> 	
+<li>数量<input type="text" name="num"/>	</li> 	
+<li>备注<input type="text" name="remark"/>	</li> 
+<li>用途<input type="text" name="usefor"/></li> 	
+<li>保修年限<input type="text" name="baoxiuyear"/>	</li> 	
+<li>第1次续保时长<input type="text" name="xubaoa"/>	</li> 	
+<li>第1次续保价格<input type="text" name="xubaoaprice"/></li> 	
+<li>第2次续保时长<input type="text" name="xubaob"/>	</li> 	
+<li>第2次续保价格<input type="text" name="xubaobprice"/></li> 	
+<li>第3次续保时长<input type="text" name="xubaoc"/>	</li> 	
+<li>第3次续保价格<input type="text" name="xubaocprice"/></li> 	
+<li>第4次续保时长<input type="text" name="xubaod"/>	</li> 	
+<li>第4次续保价格<input type="text" name="xubaodprice"/></li> 	
+
+</ul>
+		<input type="submit" value='添加IT资产'/>	
+		</form>
+
+
+	</body>
+</html>

@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'id', 1 => 'buytype', '_autoinc' => false, '_type' => array ( 'id' => 'int', 'buytype' => 'nvarchar', ), );?>

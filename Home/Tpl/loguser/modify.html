@@ -1,0 +1,43 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>操作用户修改模块</title>
+			<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css">   
+			<link rel="stylesheet" href="__ROOT__/style/admin/css/admin.css" />  
+		<script>
+			function jump(){
+                window.location="__URL__/index";  //跳转到本模块的index页面
+			}
+			window.onload=function(){
+				if(<{$data.sex}>==0){
+					document.getElementsByName('sex')[1].checked='checked';
+				}else{
+					document.getElementsByName('sex')[0].checked='checked';
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<form action='__URL__/update' method='post'>
+		<table  class='table' >
+			<tr>
+				<td colspan='6' class="th"><span class="span_SERVER"> &nbsp</span>操作用户修改模块</td>
+			</tr> 
+			<tr>
+				<th width="50px">操作用户</th>
+				<td width="50px"><input type='hidden' name='id' value="<{$data.id}>"/>
+					 <input type="text" name='username' value="<{$data.username}>"/></td>
+				<th width="50px" align="left">密码</th>
+				<td width="50px"><input type="password" name='password' value="<{$data.password}>"/></td>
+				<th width="50px" align="left">性别</th>
+				<td>男<input type='radio' name='sex' value='1' > &nbsp;&nbsp;女<input type='radio' name='sex' value='0'/></td>
+			</tr>
+			<tr>
+				<td colspan='6' align="center" > <input   class="btn btn-primary"  type="submit" value='提交修改'/>  &nbsp 
+				<button type="button" class="btn btn-default" onclick="jump()" >					返回</button>  
+				</td>
+			</tr> 
+		</table>
+		</form>
+	</body>
+</html>

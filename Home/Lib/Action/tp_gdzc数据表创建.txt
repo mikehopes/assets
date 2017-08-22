@@ -1,0 +1,52 @@
+CREATE TABLE  `tp_gdzc`(
+	`id` int(11) NOT NULL AUTO_INCREMENT,
+	`company` varchar(30)  NULL,
+	`dept` varchar(30)     NULL,
+	`employee` varchar(30) NULL,
+	`hardtype` varchar(30) NULL,
+	`fixassettag` varchar(50) NULL,
+	`usestate` varchar(20) NULL,
+	`brand` varchar(50) NULL,
+	`SN` varchar(50) NULL,
+	`buyyear` int NULL,
+	`buymonth` int NULL,
+	`buyday` int NULL,
+	`useyear` int NULL,
+	`LCDtype` varchar(20) NULL,
+	`locate` varchar(50) NULL,
+	`OS` varchar(10) NULL,
+	`office` varchar(20) NULL,
+	`oldtag` varchar(50) NULL,
+	`buytype` varchar(20) NULL,
+	`num` int NULL,
+	`remark` varchar(50) NULL,
+	`usefor` varchar(50) NULL,
+	`baoxiuyear` int NULL,
+	`xubaoa` int NULL,
+	`xubaoaprice` int NULL,
+	`xubaob` int NULL,
+	`xubaobprice` int NULL,
+	`xubaoc` int NULL,
+	`xubaocprice` int NULL,
+	`xubaod` int NULL,
+	`xubaodprice` int NULL,
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf32 
+
+
+
+
+CREATE TABLE `tp_gdzc` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+
+ `username` varchar(30) NOT NULL,
+ `sex` tinyint(4) NOT NULL DEFAULT '1',
+ `password` varchar(30) NOT NULL,
+
+
+
+
+ PRIMARY KEY (`id`),
+ UNIQUE KEY `id` (`id`)
+) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf32 

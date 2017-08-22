@@ -1,0 +1,34 @@
+﻿<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>硬件大类新增</title>
+			<link rel="stylesheet"  href="__PUBLIC__/css/bootstrap.min.css">   
+			<link rel="stylesheet"  href="__ROOT__/style/admin/css/admin.css" />  
+		<script>
+			function jump(){
+                window.location="__URL__/index";  //跳转到本模块的index页面
+			}
+		</script>
+	</head>
+	<body>
+		<form action='__URL__/create' method='post'>
+		<table  class='table' >
+			<tr>
+				<td colspan='4' class="th"><span class="span_SERVER"> &nbsp</span>硬件大类新增模块</td>
+			</tr> 
+			<tr>
+				<th width="100%">硬件大类编号</th>
+				<td ><input type="text" name="hardclassid"/></td>
+
+				<th align="left">硬件类型大类</th>
+				<td><input type="text" name="hardclass"/></td>
+			</tr>
+			<tr>
+				<td colspan='4' align="center" > <input   class="btn btn-primary"  type="submit" value='保存新增硬件大类'/>  &nbsp 
+				<button type="button" class="btn btn-default" onclick="jump()" > 返回</button>  
+				</td>
+			</tr> 
+		</table>
+		</form>
+	</body>
+</html>

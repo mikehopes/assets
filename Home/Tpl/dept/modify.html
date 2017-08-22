@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>部门修改模块</title>
+			<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css">   
+			<link rel="stylesheet" href="__ROOT__/style/admin/css/admin.css" />  
+		<script>
+			function jump(){
+                window.location="__URL__/index";  //跳转到本模块的index页面
+			}
+		</script>
+	</head>
+	<body>
+		<form action='__URL__/update' method='post'>
+		<table  class='table' >
+			<tr>
+				<td colspan='6' class="th"><span class="span_SERVER"> &nbsp</span>部门档案修改模块</td>
+			</tr> 
+			<tr>
+				<th>部门编号</th>
+				<td width="60px"><input type='hidden' name='id' value="<{$data.id}>"/>
+					 <input type="text" name='deptid' value="<{$data.deptid}>"/></td>
+				<th align="left">部门名称</th>
+				<td width="60px"><input style="width:240px;"  type="text" name='deptsname' value="<{$data.deptsname}>"/></td>
+				<th align="left">部门英文名</th>
+				<td width="60px"><input  style="width:240px;"  type="text" name='deptname' value="<{$data.deptname}>"/></td>	
+			</tr>
+			<tr>
+				<td colspan='6' align="center" > <input   class="btn btn-primary"  type="submit" value='提交修改'/>  &nbsp 
+				<button type="button" class="btn btn-default" onclick="jump()" >					返回</button>  
+				</td>
+			</tr> 
+		</table>
+		</form>
+
+<!-- 		<form action="__URL__/update" method='post'>
+			<input type='hidden' name='id' value="<{$data.id}>"/>
+			部门ID <input type="text" name='deptid' value="<{$data.deptid}>"/><br/>
+			部门名称 <input type="text" name='deptsname' value="<{$data.deptsname}>"/><br/>
+			部门英文名 <input type="text" name='deptname' value="<{$data.deptname}>"/><br/>
+			<input type="submit" value="提交修改"/>
+		</form> -->
+	</body>
+</html>

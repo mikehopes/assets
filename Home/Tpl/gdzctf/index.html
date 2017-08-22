@@ -1,0 +1,110 @@
+<!-- <!DOCTYPE html> -->
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>固定资产转移记录</title>
+		<style type="text/css">
+		table{ font-size:12px;  border-collapse:collapse;width: 100%;}
+		table th {
+    border-width: 1px;
+    padding: 0px;
+    border-style: solid;
+    border-color: #666666;
+    background-color: #dedede;
+}
+		table tr:hover { background-color: #3399CC; }
+		table tr.altrow {  background-color: #3333CC; } 
+		table th{} 
+		table tr{}
+		</style>
+		<script>
+			function jumpadd(){
+				window.location="__URL__/add";
+			}
+		</script>
+	</head>
+	<body>
+	访问tpl/gdzctf/index.html 
+		<form action="__URL__/logout" method='post'>  
+		<div style = "text-align:right;">	<input type='submit' value=' 退出登录'/></div>
+		</form>
+		<table width="100%"  border="1" cellspacing="0" cellpadding="0" align='center'>
+			<tr>
+				<th>ID</th>
+<th>company</th>
+<th>Dept</th>
+<th>User</th>
+<th>hardtype</th>
+<th>Fix asset tag(9位)</th>
+<th>使用状态</th>
+<th>Brand/Model</th>
+<th>Serial Number</th>
+<th>到货日期（年）</th>
+<th>到货日期（月）</th>
+<th>到货日期（日）</th>
+<th>使用年限</th>
+<th>显示器类型</th>
+<th>设备所在地</th>
+<th>OS</th>
+<th>Office</th>
+<th>old tag</th>
+<th>购买类型</th>
+<th>数量</th>
+<th>备注</th>
+<th>用途</th>
+<th>保修年限</th>
+<th>第1次续保时长</th>
+<th>第1次续保价格</th>
+<th>第2次续保时长</th>
+<th>第2次续保价格</th>
+<th>第3次续保时长</th>
+<th>第3次续保价格</th>
+<th>第4次续保时长</th>
+<th>第4次续保价格</th>
+
+
+				<th>操作</th>
+			</tr>
+			<volist name='data' id='vo'>
+				<tr>
+					<td><{$vo.id}></td>
+<td><{$vo.company}></td>
+<td><{$vo.dept}></td>
+<td><{$vo.employee}></td>
+<td><{$vo.hardtype}></td>
+<td><{$vo.fixassettag}></td>
+<td><{$vo.usestate}></td>
+<td><{$vo.brand}></td>
+<td><{$vo.SN}></td>
+<td><{$vo.buyyear}></td>
+<td><{$vo.buymonth}></td>
+<td><{$vo.buyday}></td>
+<td><{$vo.useyear}></td>
+<td><{$vo.LCDtype}></td>
+<td><{$vo.locate}></td>
+<td><{$vo.OS}></td>
+<td><{$vo.office}></td>
+<td><{$vo.oldtag}></td>
+<td><{$vo.buytype}></td>
+<td><{$vo.num}></td>
+<td><{$vo.remark}></td>
+<td><{$vo.usefor}></td>
+<td><{$vo.baoxiuyear}></td>
+<td><{$vo.xubaoa}></td>
+<td><{$vo.xubaoaprice}></td>
+<td><{$vo.xubaob}></td>
+<td><{$vo.xubaobprice}></td>
+<td><{$vo.xubaoc}></td>
+<td><{$vo.xubaocprice}></td>
+<td><{$vo.xubaod}></td>
+<td><{$vo.xubaodprice}></td>
+
+   <td><a href="__URL__/del/id/<{$vo.id}>"   onclick="return confirm('删除后无法恢复,确定要删除吗')"> 删除</a> | <a href="__URL__/modify/id/<{$vo.id}>">修改</a></td>
+				</tr>
+</volist>
+		</table>
+		<center>
+			<button onclick="jumpadd()">添加IT资产</button>
+		</center>
+	</body>
+</html>

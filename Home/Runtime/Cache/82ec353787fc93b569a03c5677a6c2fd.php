@@ -1,0 +1,12 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html><head><!-- <meta http-equiv="content-type" content="text/html; charset=utf-8"> --><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"><title>顶峰IT资产用户登陆</title><!-- <link rel='stylesheet' type='text/css' href='__PUBLIC__/CSS/basic.css'/> --><style type="text/css">	/**{margin:0px;padding:0px;}*/
+</style><link rel="stylesheet" href="plugins/layui/css/layui.css" media="all" /><link rel="stylesheet" href="__PUBLIC__/css/login.css" /><!-- // <script src="__PUBLIC__/JS/basic.js"></script> --></head><body class="beg-login-bg"><div class="beg-login-box"><header ><h1 align="center">用户登录</h1></header><div class="beg-login-main "><form action='__URL__/do_login' method='post' name='myForm'><div class="layui-form-item beg-login-remember" ><!-- 					<label class="beg-login-icon"><i class="layui-icon">&#xe612;</i></label> -->					用&nbsp&nbsp&nbsp&nbsp户&nbsp<input type="text" name="username" lay-verify="userName" autocomplete="off" placeholder="这里输入用户名" class="layui-input" style="width:150px"></div><div class="layui-form-item beg-login-remember">					密&nbsp&nbsp&nbsp&nbsp码&nbsp<input type="password" name="password" lay-verify="password" autocomplete="off" placeholder="这里输入密码.." class="layui-input" style="width:150px"></div><div class="layui-form-item beg-login-remember"><div class="beg-pull-left "  >							验证码&nbsp<input type='text' name='code' lay-verify="code" autocomplete="off" placeholder="这里输入验证码" class="layui-input" style="width:150px"></div><div class="beg-pull-right" ><img src="__APP__/Public/code"    onclick='this.src=this.src+"?"+Math.random()'/></div><div class="beg-clear"></div></div><div class="layui-form-item beg-login-remember" align="center" valign="middle"><button class="layui-btn layui-btn-primary" lay-submit lay-filter="login"  onclick="sub()">登录
+                    </button></div></form></div><footer><p align="center">IT固定资产管理</p></footer></div><script type="text/javascript" src="plugins/layui/layui.js"></script><script>			layui.use(['layer', 'form'], function() {
+				var layer = layui.layer,
+					$ = layui.jquery,
+					form = layui.form();
+				form.on('submit(login)',function(data){
+					location.href='index.html';
+					return false;
+				});
+			});
+		</script></body></html>

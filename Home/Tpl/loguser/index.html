@@ -1,0 +1,36 @@
+﻿<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8">
+		<title>用户管理</title>
+		  	<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css"> 
+		 	<link rel="stylesheet" href="__ROOT__/style/admin/css/admin.css" />  
+		<script>
+			function jump(){
+                window.location="__URL__/add";    //跳转到本模块的add页面 
+			}
+		</script>
+	</head>
+	<body> 
+		<table class='table'  >
+			<tr>
+				<td colspan='3' class="th"><span class="span_SERVER"> &nbsp</span>操作用户管理模块</td>
+			</tr>
+			<tr>
+				<th>用户名</th>
+				<th>性别</th>
+				<th>操作</th>
+			</tr>
+			<!--遍历数据-->
+			<volist name='data' id='vo'>
+				<tr>
+					<td><{$vo.username}></td>
+					<td><{$vo.sex}></td>
+					<td><a href="__URL__/del/id/<{$vo.id}>"    onclick="return confirm('删除后无法恢复,确定要删除吗')">删除</a> | <a href="__URL__/modify/id/<{$vo.id}>">修改</a></td>
+				</tr>
+			</volist>
+		</table>
+		<center>
+			<button class="btn btn-primary" onclick="jump()">新增用户</button>
+		</center>
+	</body>
+</html>
