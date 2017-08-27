@@ -10,7 +10,7 @@ return array(
     'DB_HOST'  =>  '10.250.138.59'  , //设置主机
     'DB_NAME'  =>  'testA'   ,        //设置数据库名
     'DB_USER'  =>  'sa'       ,       //设置用户名
-    'DB_PWD'   =>  '' ,    //设置密码
+    'DB_PWD'   =>  'dfreasset5678**((' ,    //设置密码
     'DB_PORT'  =>  '1433'       ,     //设置端口号
     'DB_PREFIX'  =>  ''      ,        //设置自动添加表前缀 M方法中
     'DB_SQL_LOG'  =>    true,         // 记录SQL信息
