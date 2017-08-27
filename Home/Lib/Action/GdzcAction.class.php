@@ -46,7 +46,6 @@
 			$arr=$m->find($id);
 			$this->assign('data',$arr);
 
-
 			$fixassettag=$arr['fixassettag'];
 			$mm=M('transfer');
 			$condition['fixtag'] =  array('eq', $fixassettag);

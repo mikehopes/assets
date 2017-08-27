@@ -1,21 +1,44 @@
 <html>
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
-		<title>硬件类型 修改模块</title>
-		访问tpl/hardtype/modify.html 
-
+		<title>硬件类型修改模块</title>
+			<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css">   
+			<link rel="stylesheet"    href="__ROOT__/style/admin/css/admin.css" />  
+		<script>
+			function jump(){
+                window.location="__URL__/index";  //跳转到本模块的index页面
+			}
+		</script>
 	</head>
 	<body>
-		<form action="__URL__/update" method='post'>
-			<input type='hidden' name='id' value="<{$data.id}>"/>
-			硬件类型编号 <input type="text" name='hardid' value="<{$data.hardid}>"/><br/>
-			硬件类型英文 <input type="text" name='hardtype' value="<{$data.hardtype}>"/><br/>
-			硬件类型中文 <input type="text" name='hardzw' value="<{$data.hardzw}>"/><br/>
-			硬件类型大类 <input type="text" name='hardclass' value="<{$data.hardclass}>"/><br/>
-			保修年限 <input type="text" name='baoxiuyear' value="<{$data.baoxiuyear}>"/><br/>
-			使用年限 <input type="text" name='useyear' value="<{$data.useyear}>"/><br/>
-
-			<input type="submit" value="提交修改"/>
+		<form action='__URL__/update' method='post'>
+		<table  class='table' >
+			<tr>
+				<td colspan='6' class="th"><span class="span_SERVER"> &nbsp</span>硬件类型修改模块</td>
+			</tr> 
+			<tr>
+				<th width="120px;" >硬件类型编号</th>
+				<td width="100px"> <input type='hidden' name='id' value="<{$data.id}>"/>
+				 <input style="width:100%;"  type="text" name='hardid' value="<{$data.hardid}>"/></td>
+				<th width="120px" align="left">硬件类型英文</th>
+				<td ><input  style="width:100%;"  type="text" name='hardtype' value="<{$data.hardtype}>"/></td>
+				<th width="120px"  align="left">硬件类型中文</th>
+				<td ><input style="width:100%;"  type="text" name='hardzw' value="<{$data.hardzw}>"/></td>
+			</tr>
+			<tr>
+				<th width="120px" >硬件类型大类</th>
+				<td ><input style="width:100%;"  type="text" name='hardclass' value="<{$data.hardclass}>"/></td>
+				<th width="120px"  align="left">保修年限</th>
+				<td > <input style="width:100%;"  type="text" name='baoxiuyear' value="<{$data.baoxiuyear}>"/></td>
+				<th width="120px"  align="left">使用年限</th>
+				<td ><input  style="width:100%;"  type="text" name='useyear' value="<{$data.useyear}>"/></td>
+			</tr>
+			<tr>
+				<td colspan='6' align="center" > <input   class="btn btn-primary"  type="submit" value='提交修改'/>  &nbsp 
+				<button type="button" class="btn btn-default" onclick="jump()" >					返回</button>  
+				</td>
+			</tr> 
+		</table>
 		</form>
 	</body>
 </html>

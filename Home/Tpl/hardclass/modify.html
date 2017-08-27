@@ -2,14 +2,32 @@
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=utf-8">
 		<title>硬件大类修改模块</title>
+			<link rel="stylesheet"    href="__PUBLIC__/css/bootstrap.min.css">   
+			<link rel="stylesheet"    href="__ROOT__/style/admin/css/admin.css" />  
+		<script>
+			function jump(){
+                window.location="__URL__/index";  //跳转到本模块的index页面
+			}
+		</script>
 	</head>
 	<body>
-		<form action="__URL__/update" method='post'>
-			<input type='hidden' name='id' value="<{$data.id}>"/>
-			硬件大类编号 <input type="text" name='hardclassid' value="<{$data.hardclassid}>"/><br/>
-			硬件大类 <input type="text" name='hardclass' value="<{$data.hardclass}>"/><br/>
-			
-			<input type="submit" value="提交修改"/>
+		<form action='__URL__/update' method='post'>
+		<table  class='table' >
+			<tr>
+				<td colspan='4' class="th"><span class="span_SERVER"> &nbsp</span>硬件大类修改模块</td>
+			</tr> 
+			<tr>
+				<th>硬件大类编号</th>
+				<td width="60px"> <input type='hidden' name='id' value="<{$data.id}>"/> <input type="text"  width="100%" name='hardclassid' value="<{$data.hardclassid}>"/></td>
+				<th>硬件大类</th>
+				<td ><input type="text" width="100%"   name='hardclass' value="<{$data.hardclass}>"/></td>
+			</tr>
+			<tr>
+				<td colspan='4' align="center" > <input   class="btn btn-primary"  type="submit" value='提交修改'/>  &nbsp 
+				<button type="button" class="btn btn-default" onclick="jump()" >					返回</button>  
+				</td>
+			</tr> 
+		</table>
 		</form>
 	</body>
 </html>
