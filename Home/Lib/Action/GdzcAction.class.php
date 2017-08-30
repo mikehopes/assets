@@ -88,7 +88,7 @@
 					if($count>0){
 						//下面为日志记录过程
 						$log=M('log');
-						$log->employee=$_POST['employee'].'To'.$_POST['transfrom'];
+						$log->employee=$_POST['employee'].' To '.$_POST['transto'];
 						$log->fixtag=$_POST['fixassettag'];
 						$log->operuser=$_SESSION['username'];
 					 	$log->logtype='transfer';
