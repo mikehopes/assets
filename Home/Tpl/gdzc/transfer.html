@@ -156,10 +156,11 @@
 <input type='hidden' name='xubaod' value="<{$data.xubaod}>"/>
 <input type='hidden' name='xubaodprice' value="<{$data.xubaodprice}>"/> -->
 <input type='hidden' name='olddept' value="<{$data.dept}>"/>
+<input type='hidden' name='oldcompany' value="<{$data.company}>"/>
 	<ul class="b";margin:50px;> 
 		<!-- <li><label >公司</label> <input type='text' name='companya' value="<{$data.company}>">   -->
-<!-- 		<li><label >公司</label>    
-		   	<select name='company'    value="<{$data.company}>">  
+		<li><label >公司</label>    
+		   	<select name='newcompany'    value="<{$data.company}>">  
 				<?php
 				$m=M('company');
 				$u=M('usercontrol'); 
@@ -175,9 +176,9 @@
 					}    
 				?>
 			</select>  
+		</li> 
+<!-- 		<li><label >公司(*不可变更)</label><input type="text"  readonly="readonly" name='company' value="<				{$data.company}>"/><br/>
 		</li> -->
-				<li><label >公司(*不可变更)</label><input type="text"  readonly="readonly" name='company' value="<{$data.company}>"/><br/>
-		</li>
 		<li > <label>人员部门</label> 
 	    	<select  name='newdept'     value="<{$data.dept}>">  
 				<?php
@@ -206,10 +207,12 @@
 <table class="altrowstable  table-hover table-condensed" id="alternatecolor">
 <tr >
  	<th>资产编号</th>
- 	<th>来自部门</th>
- 	<th>来自用户</th>
-	<th>新用户所属部门</th>
- 	<th>转移至新用户</th>
+	<th>原公司</th>
+ 	<th>原部门</th>
+ 	<th>原用户</th>
+	<th>新公司</th>
+	<th>新部门</th>
+ 	<th>新用户</th>
  	<th>转移日期</th>
  	<th>备注</th>
  	<th>操作用户</th>
@@ -218,8 +221,10 @@
 <volist name='datat' id='vot'>
 <tr>
 	<td><{$vot.fixtag}></td> 
-	<td width:200px><{$vot.olddept}></td> 
+	<td><{$vot.oldcompany}></td> 
+	<td><{$vot.olddept}></td> 
 	<td><{$vot.transfrom}></td>	
+	<td><{$vot.newcompany}></td> 
 	<td><{$vot.newdept}></td> 
 	<td><{$vot.transto}></td>
 	<td><{$vot.transdate}></td>

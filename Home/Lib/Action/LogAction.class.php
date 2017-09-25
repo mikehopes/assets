@@ -21,7 +21,6 @@
 			$cxfixtag  = $_POST['cxfixtag'];
             $cxoperuser= $_POST['cxoperuser'];
             $cxlogtype = $_POST['cxlogtype'];	
-
 	           if ( $cxuser !='' ) {
 					$condition['employee'] = array('like' ,'%'.$cxuser.'%');
 	            }   if ($cxfixtag !='' )  {
@@ -34,17 +33,9 @@
 	               else  {   
                 } 	
 			$arr=$m->where($condition)->select();
-
-
 			$this->assign('data',$arr);
-
 			$this->display();
 		}
 
-         public function  logout(){ 
-              $this->redirect('login/logout');
-        }
-
-		
 	}
 ?>

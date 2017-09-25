@@ -46,7 +46,7 @@
 		/*重写table-hover颜色*/
 		.table-hover > tbody > tr:hover > td,
 		.table-hover > tbody > tr:hover > th {
-		  background-color: #9966CC;
+		  background-color: #9966CC;  //紫色 
 		}
 		/*重写bootstap .table-condensed > tbody > tr > td内边距*/
 		.table-condensed > tbody > tr > td,	
@@ -120,10 +120,50 @@
 		</table>  
 
 		<form  style = "align:left;"      action="__URL__/index"  method='post'>
-			 &nbsp&nbsp用户 <input type='text' name="cxuser"></input>
-			 资产编号 <input type='text' name="cxfixassettag"></input>
+			公司 
+			<!-- <input type='text' name="cxcompany"></input> -->
+			 <select   name='cxcompany'  style="width:100px;">      
+			<?php
+			$m=M('company');   
+			$u=M('usercontrol');    
+			$map['cuser']=$_SESSION['username'];          
+			$uu=$u->where($map)->getField('company');        
+			$uuu=explode(",", $uu); 
+			$condition['comname'] = array('in',$uuu);   
+			$a=$m->where($condition)->select();  
+			//$a=$uuu;
+			echo "<option value="."".">"."-默认全选-"."</option>";   
+			foreach ($a as $b){   
+			    echo "<option value=".$b['comname'].">".$b['comname']."</option>";   
+			}   
+			?>   
+		</select>   
+		部门 
+		<select  name='cxdept' style="width:120px;">  
+	    <?php
+			$m=M('dept');
+			$a=$m->order('deptid')->select();
+			echo "<option value="."".">"."-默认全选-"."</option>";  
+			foreach ($a as $b){
+			    echo "<option value=".$b['deptsname'].">".$b['deptsname']."</option>";
+			}
+		?>
+	     </select>
+	     硬件类型
+	     <select  name='cxhardtype' style="width:100px;">  
+			    <?php
+				$m=M('hardtype');
+				$a=$m->order('hardid')->select();
+				echo "<option value="."".">"."-默认全选-"."</option>";  
+				foreach ($a as $b){
+				    echo "<option value=".$b['hardtype'].">".$b['hardtype']."</option>";
+				}
+				?>
+		</select>
+			 &nbsp&nbsp用户 <input type='text' name="cxuser" style="width:100px;"></input>
+			 资产编号 <input type='text' name="cxfixassettag" style="width:100px;"></input>
 			 使用状态
-			 <select  name='cxusestate'   >  
+			 <select  name='cxusestate' style="width:120px;">  
 					<option value="">-不选"已报废"-</option> ;
 					<option    value="在用">在用</option>
 					<option    value="超期使用">超期使用</option>
@@ -136,12 +176,6 @@
 			</select>
 			 <button   type='submit'>数据检索</button>
 		</form>
-
-		<!-- 	<form  style = "align:left;"   method='post'>
-			 User<input type='text' name="cxuser"></input>
-			 fixassettag(9位) <input type='text' name="cxfixassettag"></input>
-			 <button onclick="__URL__/index" >数据检索</button>
-		</form> -->   
 
 		<!-- <table  width="100%"  border="1" cellspacing="0" cellpadding="0" align='center'>  -->
 		<table  class="altrowstable  table-hover table-condensed" id="alternatecolor" >

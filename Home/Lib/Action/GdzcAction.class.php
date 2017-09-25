@@ -7,6 +7,9 @@
 		public function index(){
 			$m=M('gdzc');
             $mm=$m->select();  
+            $cxcompany = $_POST['cxcompany'];
+            $cxdept = $_POST['cxdept'];
+            $cxhardtype = $_POST['cxhardtype'];
             $cxfixassettag = $_POST['cxfixassettag'];
             $cxuser=$_POST['cxuser'];
             $cxusestate=$_POST['cxusestate'];
@@ -19,7 +22,15 @@
             $uuu=explode(",", $uu);
 			$condition['company'] = array('in',$uuu);
 			$condition['usestate'] = array('not in','已报废');
-	           if ( $cxfixassettag !='' ) {
+				if ( $cxcompany !='' ) {
+					// $condition['company'] = array('like' ,'%'.$cxcompany.'%');
+			$condition = array('company'=>array('in',$uuu),'company'=>array('like' ,'%'.$cxcompany.'%'),'and');
+			//$condition['company'] = array(array('in',$uuu),array('like' ,'%'.$cxcompany.'%'),'and');
+	            }   if ( $cxdept !='' ) {
+					$condition['dept'] = array('EQ' ,$cxdept);
+	            }	if ( $cxhardtype !='' ) {
+					$condition['hardtype'] = array('EQ' ,$cxhardtype);
+	            }  	if ( $cxfixassettag !='' ) {
 					$condition['fixassettag'] = array('like' ,'%'.$cxfixassettag.'%');
 	            }   if ($cxuser !='' )  {
 					         $condition['employee'] = array('like' ,'%'.$cxuser.'%');       
@@ -60,7 +71,7 @@
         	//update GDZC表的user信息   
 			$m=D('gdzc');               //D方法将调用Lib\Model下GdzcModel下的自动完成定义
 			$data['id']=$_POST['id'];   
-			// $data['company']=$_POST['company'];   
+			$data['company']=$_POST['newcompany'];   
 			$data['dept']=$_POST['newdept'];   
 			$data['employee']=$_POST['transto'];  
 			// $data['hardtype']=$_POST['hardtype'];   
@@ -74,6 +85,8 @@
 			$mm->transdate=$_POST['transdate'];
 			$mm->olddept=$_POST['olddept'];
 			$mm->newdept=$_POST['newdept'];
+			$mm->oldcompany=$_POST['oldcompany'];
+			$mm->newcompany=$_POST['newcompany'];
 			$mm->remark=$_POST['transremark'];
 			$mm->operuser=$_SESSION['username'];
 			$mm->operdate=date('Y-m-d H:i:s', time());
@@ -158,12 +171,7 @@
 		/*
 		 *	下面为显示修改页面
 		 * */
-/*        public function _before_modify(){
-		//做判断，如果没有登录，跳转到登陆页面
-		if(!isset($_SESSION['username']) || $_SESSION['username']==''){
-			$this->redirect('login/index');
-		    }
-	    }*/
+
 		public function modify(){
 			$id=$_GET['id'];
 			$m=M('gdzc');
@@ -262,13 +270,6 @@
 		/*
 		 * 添加页面
 		 * */
-/*  		public function _before_add(){
-			//做判断，如果没有登录，跳转到登陆页面
-			if(!isset($_SESSION['username']) || $_SESSION['username']==''){
-			$this->redirect('login/index');
-		    }
-   	 	}*/
-
 		public function add(){
 			$this->display();
 		}
