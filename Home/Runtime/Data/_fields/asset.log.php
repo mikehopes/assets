@@ -1,1 +1,0 @@
-<?php	return array ( 0 => 'id', 1 => 'employee', 2 => 'fixtag', 3 => 'operuser', 4 => 'logtype', 5 => 'logtime', '_autoinc' => false, '_type' => array ( 'id' => 'int', 'employee' => 'nvarchar', 'fixtag' => 'nvarchar', 'operuser' => 'nvarchar', 'logtype' => 'nvarchar', 'logtime' => 'varchar', ), );?>

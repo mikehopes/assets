@@ -1,1 +1,0 @@
-<?php	return array ( 0 => 'id', 1 => 'cuser', 2 => 'company', '_autoinc' => false, '_type' => array ( 'id' => 'int', 'cuser' => 'nvarchar', 'company' => 'nvarchar', ), );?>

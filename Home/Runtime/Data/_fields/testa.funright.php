@@ -1,1 +1,0 @@
-<?php	return array ( 0 => 'id', 1 => 'funuser', 2 => 'funcreate', 3 => 'funmodify', 4 => 'fundelete', 5 => 'funtransfer', '_autoinc' => false, '_type' => array ( 'id' => 'int', 'funuser' => 'varchar', 'funcreate' => 'int', 'funmodify' => 'int', 'fundelete' => 'int', 'funtransfer' => 'int', ), );?>
