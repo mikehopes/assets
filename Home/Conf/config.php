@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 return array(
 	//'配置项'=>'配置值'
     'URL_PATHINFO_DEPR' =>  '/'   ,   //修改URL的分割符
@@ -7,10 +7,10 @@ return array(
     'TMPL_R_DELIM'  =>  '}>'     ,    //设置右界符
 
     'DB_TYPE'  =>  'sqlsrv'      ,    //设置数据库类型
-    'DB_HOST'  =>  '10.250.138.59'  , //设置主机
-    'DB_NAME'  =>  'testA'   ,        //设置数据库名
+    'DB_HOST'  =>  '10.250.88.88'  , //设置主机
+    'DB_NAME'  =>  'asset'   ,        //设置数据库名
     'DB_USER'  =>  'sa'       ,       //设置用户名
-    'DB_PWD'   =>  '' ,    //设置密码
+    'DB_PWD'   =>  '1111' ,    //设置密码
     'DB_PORT'  =>  '1433'       ,     //设置端口号
     'DB_PREFIX'  =>  ''      ,        //设置自动添加表前缀 M方法中
     'DB_SQL_LOG'  =>    true,         // 记录SQL信息

@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'id', 1 => 'deptid', 2 => 'deptsname', 3 => 'deptname', '_autoinc' => false, '_type' => array ( 'id' => 'int', 'deptid' => 'nvarchar', 'deptsname' => 'nvarchar', 'deptname' => 'nvarchar', ), );?>

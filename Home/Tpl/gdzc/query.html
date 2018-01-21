@@ -59,7 +59,7 @@
  
  <p class="a"   style="text-align:center;"><b>IT固定资产 单资产完整信息显示 模块</b></p>
 
-		<form action="" id='form' method='post'>
+		<form action="__URL__/upload"  enctype="multipart/form-data"  id='form' method='post'>
 
 			<input type='hidden' name='id' value="<{$data.id}>"/>
 	<ul class="b";margin:50px;> 
@@ -191,11 +191,18 @@
 <li><label >第3次续保价格</label><input type="text" name='xubaocprice' value="<{$data.xubaocprice}>"/><br/></li>
 <li><label >第4次续保时长</label><input type="text" name='xubaod' value="<{$data.xubaod}>"/><br/></li>
 <li><label >第4次续保价格</label><input type="text" name='xubaodprice' value="<{$data.xubaodprice}>"/><br/></li>
+<!-- 	</form>	
 
+<form action="__URL__/upload" enctype="multipart/form-data" method="post" > <{$data.signfile}>-->
+<!-- <input type="text" name="name" /> -->
+<li><label >上传签收单</label><input type="file"     name="photo"/>
+<input type="submit" value="提交签收单"  width="80"> </li>
+ 
+</form>
 
-<!-- 		<center><button  id='submit' type="submit" class="btn btn-success">提交修改</button>  </center>  -->
-		</form>			   
+<img src="__ROOT__/Public/signfile/<{$data.signfile}>" style="width: 595px; height: 842px; border: 0px none; margin-left: -3px;" />
 
+<!-- 	<center><button  id='submit' type="submit" class="btn btn-success">上传图片</button>  </center>  -->
 	</body>		
 
 	<script src="__PUBLIC__/js/jquery.min.js"></script>		

@@ -3,6 +3,35 @@
 
 		protected $patchValidate = true;    //开启批量验证
 
+       //上传签收单方法
+		public function upload(){
+			$id=$_POST['id'];
+			import('ORG.Net.UploadFile');
+			$upload = new UploadFile();// 实例化上传类
+			// $upload->maxSize  = 3145728 ;// 设置附件上传最大大小
+			$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg','bmp','swf');// 设置附件上传类型
+			$upload->savePath =  './Public/signfile/';// 设置附件上传目录
+	 		$savename=$id;
+			$upload->saveRule = $savename;  //重写类的保存名称自动唯一生成定义，将会按照原始名称保存
+			$upload->uploadReplace = true;// 存在同名是否覆盖
+
+				if(!$upload->upload()) {// 上传错误提示错误信息
+				$this->error($upload->getErrorMsg());
+				}else{// 上传成功 获取上传文件信息
+				 $info =  $upload->getUploadFileInfo();
+				}
+			// 保存表单数据 包括附件数据
+			$id=$_GET['id'];
+			$m=D('gdzc');
+			$data['id']=$_POST['id'];
+			//$data['signfile']=$_POST['photo'];
+			$data['signfile']=$info[0]['savename']; // 保存上传的照片根据需要自行组装
+			$m->save($data);
+			$this->success('数据保存成功！');
+
+		}
+
+
         // 1-下面为主页显示功能
 		public function index(){
 			$m=M('gdzc');

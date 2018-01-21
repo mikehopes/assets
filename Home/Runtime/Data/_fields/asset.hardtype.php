@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'id', 1 => 'hardid', 2 => 'hardtype', 3 => 'hardzw', 4 => 'hardclass', 5 => 'baoxiuyear', 6 => 'useyear', '_autoinc' => false, '_type' => array ( 'id' => 'int', 'hardid' => 'int', 'hardtype' => 'nvarchar', 'hardzw' => 'nvarchar', 'hardclass' => 'nvarchar', 'baoxiuyear' => 'int', 'useyear' => 'int', ), );?>

@@ -1,0 +1,1 @@
+<?php	return array ( 0 => 'id', 1 => 'comid', 2 => 'comname', 3 => 'enname', 4 => 'remark', '_autoinc' => false, '_type' => array ( 'id' => 'int', 'comid' => 'nvarchar', 'comname' => 'nvarchar', 'enname' => 'nvarchar', 'remark' => 'nvarchar', ), );?>
